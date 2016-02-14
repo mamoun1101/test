@@ -8,32 +8,6 @@
     let predicate = NSPredicate(value: true)
     let query = CKQuery(recordType: "Products", predicate: predicate)
     query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-    
-    database.performQuery(query, inZoneWithID: nil, completionHandler: {
-        (results, error) -> Void in
-        
-        if error != nil {
-            
-            return
-        
-        } else {
-            
-            let limit = 10
-            
-            let APIrequests: Int = ((Int((results?.count)!)  + limit - 1)) / limit
-            
-            print("\(APIrequests)") // number of requests we need
-            
-            print(results?.count)
-            
-            let downloadGroup: dispatch_group_t = dispatch_group_create()
-            
-            for var i = 0; i < APIrequests; i++ {}
-        
-        }
-    })
- ///
-        
     let queryOperation = CKQueryOperation(query: query)
     queryOperation.queuePriority = .VeryHigh
     queryOperation.resultsLimit = 10
